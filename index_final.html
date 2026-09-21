@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#04154F">
+<title>Md Sakib Hossen | EDITIUM</title>
+<meta name="description" content="EDITIUM: Creative Designer, AI Creator, Video Editor, Graphic Designer। আমার সব লিংক এক জায়গায়।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #FFFFFF;
+    --soft: rgba(255, 255, 255, .74);
+    --display: "Bricolage Grotesque", "Hind Siliguri", system-ui, sans-serif;
+    --body: "Hind Siliguri", "Bricolage Grotesque", system-ui, sans-serif;
+    color-scheme: dark;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { background: #04154F; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  ul { list-style: none; margin: 0; padding: 0; }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid #fff; outline-offset: 3px; border-radius: 12px; }
+
+  /* Background the glass sits on */
+  .bg {
+    position: fixed; inset: 0; z-index: -1;
+    background:
+      radial-gradient(60% 38% at 14% 8%, rgba(90, 200, 255, .6), transparent 70%),
+      radial-gradient(55% 38% at 92% 34%, rgba(150, 100, 255, .5), transparent 70%),
+      radial-gradient(70% 45% at 18% 96%, rgba(0, 130, 255, .55), transparent 70%),
+      linear-gradient(170deg, #04154F 0%, #0A35C4 55%, #1A5CF0 100%);
+  }
+
+  /* Liquid glass */
+  .glass {
+    position: relative;
+    background: linear-gradient(145deg, rgba(255,255,255,.26) 0%, rgba(255,255,255,.07) 55%, rgba(255,255,255,.14) 100%);
+    -webkit-backdrop-filter: blur(20px) saturate(170%);
+    backdrop-filter: blur(20px) saturate(170%);
+    border: 1px solid rgba(255, 255, 255, .34);
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, .65),
+      inset 0 -1px 1px rgba(255, 255, 255, .16),
+      0 12px 32px rgba(0, 12, 70, .38);
+  }
+  .glass::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+    background: radial-gradient(120% 60% at 28% 0%, rgba(255,255,255,.34), transparent 62%);
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass { background: rgba(20, 60, 170, .6); }
+  }
+
+  .page { max-width: 540px; margin: 0 auto; padding: calc(40px + env(safe-area-inset-top, 0px)) 18px 170px; }
+  section { scroll-margin-top: 16px; }
+
+  /* Profile */
+  .profile { text-align: center; }
+  .avatar-ring { display: block; width: 132px; height: 132px; margin: 0 auto 18px; padding: 7px; border-radius: 50%; }
+  .avatar { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: rgba(255,255,255,.15); }
+  .profile h1 { margin: 0; font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 8vw, 2.6rem); line-height: 1.25; }
+  .social-name { margin: 6px 0 0; font-weight: 600; font-size: 1.2rem; }
+  .handle { display: inline-block; margin: 8px 0 0; padding: 2px 16px; border-radius: 999px; font-family: var(--display); font-size: .98rem; }
+  .bio { margin: 16px auto 0; max-width: 36ch; color: var(--soft); }
+
+  /* App icons */
+  .icons { display: grid; grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)); gap: 26px 10px; margin-top: 34px; }
+  .app {
+    display: flex; flex-direction: column; align-items: center; gap: 9px;
+    color: var(--ink); text-decoration: none;
+    animation: pop 560ms cubic-bezier(.2, .9, .3, 1.2) backwards;
+    animation-delay: calc(var(--i) * 80ms);
+    transition: transform 120ms ease;
+  }
+  .app:active { transform: scale(.92); }
+  .icon {
+    display: grid; place-items: center; width: 68px; height: 68px; border-radius: 22px;
+    background:
+      radial-gradient(circle at 30% 18%, var(--tint, rgba(255,255,255,.3)), transparent 78%),
+      linear-gradient(145deg, rgba(255,255,255,.26), rgba(255,255,255,.07));
+    animation: bob 3.6s ease-in-out infinite;
+  }
+  .icon svg { display: block; width: 36px; height: 36px; }
+  .app-label { font-size: .85rem; color: var(--soft); line-height: 1.2; }
+  @keyframes pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+  /* Panels */
+  .panel { margin-top: 34px; padding: 22px 18px; border-radius: 30px; }
+  .panel h2 { margin: 0 0 16px; font-family: var(--display); font-weight: 700; font-size: 1.3rem; line-height: 1.3; }
+
+  /* Videos */
+  .videos { display: grid; gap: 22px; }
+  .video { display: block; color: var(--ink); text-decoration: none; }
+  .thumb {
+    position: relative; display: block; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden;
+    background: rgba(255, 255, 255, .12); border: 1px solid rgba(255, 255, 255, .3);
+  }
+  .thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .play {
+    position: absolute; inset: 0; margin: auto; width: 58px; height: 58px; border-radius: 50%;
+    display: grid; place-items: center;
+  }
+  .play svg { width: 22px; height: 22px; margin-left: 3px; }
+  .vtitle { display: block; margin-top: 10px; font-weight: 600; line-height: 1.45; }
+
+  /* Works */
+  .works { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .tile { display: block; width: 100%; aspect-ratio: 1; padding: 5px; border-radius: 22px; overflow: hidden; cursor: pointer; }
+  .tile img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 17px; }
+  .tile.empty { display: grid; place-items: center; padding: 12px; color: var(--soft); font-size: .95rem; text-align: center; cursor: default; }
+
+  /* About */
+  .about-p { margin: 0 0 14px; max-width: 60ch; }
+  .w { display: inline-block; opacity: 0; transform: translateY(8px); filter: blur(6px);
+       transition: opacity .55s ease, transform .55s ease, filter .55s ease; }
+  .in .w { opacity: 1; transform: none; filter: none; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 26px; }
+  .chip { padding: 4px 16px; border-radius: 999px; font-size: .95rem; opacity: 0; transform: scale(.8);
+          transition: opacity .4s ease, transform .4s cubic-bezier(.2, .9, .3, 1.3); }
+  .in .chip { opacity: 1; transform: none; }
+  .wa-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
+    padding: 14px 20px; border-radius: 999px; color: #fff; text-decoration: none; font-weight: 600; font-size: 1.05rem;
+    background:
+      radial-gradient(circle at 30% 0%, rgba(37, 211, 102, .95), transparent 85%),
+      linear-gradient(145deg, rgba(37, 211, 102, .6), rgba(37, 211, 102, .25));
+    transition: transform 120ms ease;
+  }
+  .wa-btn:active { transform: scale(.97); }
+  .wa-btn svg { width: 26px; height: 26px; }
+
+  footer { margin-top: 34px; text-align: center; color: var(--soft); font-size: .9rem; }
+  .visitor-count {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    margin: 14px auto 4px; padding: 8px 16px; border-radius: 999px;
+    color: #fff; font-size: .9rem; line-height: 1;
+  }
+  .visitor-count svg { width: 17px; height: 17px; fill: none; stroke: currentColor;
+    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Floating dock */
+  .dock {
+    position: fixed; left: 50%; transform: translateX(-50%); z-index: 10;
+    width: min(100% - 24px, 520px); display: flex; gap: 10px;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
+  }
+  .pill { flex: 1; display: flex; gap: 2px; padding: 6px; border-radius: 999px; }
+  .tab {
+    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 1px;
+    padding: 7px 4px 6px; border-radius: 999px; color: var(--ink); text-decoration: none;
+    font-size: .74rem; line-height: 1.3; opacity: .8;
+    transition: background .25s ease, opacity .25s ease, box-shadow .25s ease;
+  }
+  .tab svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .tab.active { opacity: 1; background: rgba(255, 255, 255, .24); box-shadow: inset 0 1px 1px rgba(255, 255, 255, .55); }
+  .round {
+    flex: none; display: grid; place-items: center; width: 66px; height: 66px; border-radius: 50%;
+    background:
+      radial-gradient(circle at 30% 10%, rgba(37, 211, 102, .95), transparent 85%),
+      linear-gradient(145deg, rgba(37, 211, 102, .6), rgba(37, 211, 102, .25));
+    transition: transform 120ms ease;
+  }
+  .round:active { transform: scale(.94); }
+  .round svg { width: 32px; height: 32px; }
+
+  /* Lightbox */
+  dialog { color: var(--ink); border-radius: 26px; padding: 12px; max-width: 96vw; }
+  dialog::backdrop { background: rgba(2, 10, 45, .75); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+  #lightbox img { display: block; max-width: 100%; max-height: 74vh; margin: 0 auto; border-radius: 18px; }
+  #lightbox p { margin: 10px 0 12px; text-align: center; color: var(--soft); }
+  #lightbox .close { display: block; margin: 0 auto; padding: 8px 26px; border-radius: 999px; cursor: pointer; font-weight: 600; }
+
+  [hidden] { display: none !important; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .app, .icon { animation: none; }
+    .w, .chip { opacity: 1; transform: none; filter: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+
+<main class="page">
+
+  <section id="home">
+    <header class="profile">
+      <span class="avatar-ring glass"><img class="avatar" id="avatar" width="118" height="118" alt="প্রোফাইল ছবি"></span>
+      <h1 id="realName"></h1>
+      <p class="social-name" id="socialName"></p>
+      <p class="handle glass" id="handle"></p>
+      <p class="bio" id="bio"></p>
+    </header>
+    <nav aria-label="সোশ্যাল মিডিয়া লিংক">
+      <ul class="icons" id="icons"></ul>
+    </nav>
+    <div class="visitor-count glass" id="visitorCount" hidden aria-live="polite">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+      <span id="visitorText"></span>
+    </div>
+  </section>
+
+  <section class="panel glass" id="videos">
+    <h2>ভিডিও</h2>
+    <ul class="videos" id="videoList"></ul>
+  </section>
+
+  <section class="panel glass" id="works">
+    <h2>আমার কাজ</h2>
+    <ul class="works" id="workList"></ul>
+  </section>
+
+  <section class="panel glass" id="about">
+    <h2 id="aboutTitle">আমার সম্পর্কে</h2>
+    <div id="aboutText"></div>
+    <ul class="chips" id="chips"></ul>
+    <a class="wa-btn glass" id="waBtn" href="#" target="_blank" rel="noopener noreferrer"></a>
+  </section>
+
+  <footer>
+    <div id="year"></div>
+  </footer>
+</main>
+
+<nav class="dock" aria-label="মূল মেনু">
+  <div class="pill glass">
+    <a class="tab active" href="#home" data-target="home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg>
+      <span>হোম</span>
+    </a>
+    <a class="tab" href="#videos" data-target="videos">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z"/></svg>
+      <span>ভিডিও</span>
+    </a>
+    <a class="tab" href="#works" data-target="works">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M4 17l5-4.5 4 3 3-2.5 4 3.5"/></svg>
+      <span>কাজ</span>
+    </a>
+    <a class="tab" href="#about" data-target="about">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-4 3.2-6 7-6s7 2 7 6"/></svg>
+      <span>পরিচয়</span>
+    </a>
+  </div>
+  <a class="round glass" id="waRound" href="#" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp এ মেসেজ করুন"></a>
+</nav>
+
+<dialog id="lightbox" class="glass" aria-label="ছবি">
+  <img id="lbImg" alt="">
+  <p id="lbCap"></p>
+  <button class="close glass" id="lbClose" type="button">বন্ধ করুন</button>
+</dialog>
+
+<script>
+/* ==========================================================
+   এখানে নিজের তথ্য বসান। শুধু এই অংশটুকু বদলালেই হবে।
+   ========================================================== */
+var CONFIG = {
+  realName: "Md Sakib Hossen",        // প্রথমে আসল নাম দেখাবে
+  socialName: "EDITIUM",              // সোশ্যাল মিডিয়ার একাউন্টের নাম
+  handle: "@editium83",               // সোশ্যাল হ্যান্ডেল/ইউজারনেম
+  bio: "Creative Designer, AI Creator, Video Editor, Graphic Designer, Digital Creator",
+
+  // প্রোফাইল ছবি: avatar.jpg নামে index.html এর পাশে রাখুন
+  avatar: "avatar.jpg",
+
+  // WhatsApp: নম্বর লিখুন দেশের কোডসহ, + ছাড়া, ফাঁকা ছাড়া
+  whatsapp: {
+    number: "8801617799030",
+    message: "হ্যালো, আপনার ওয়েবসাইট দেখে মেসেজ করছি।",   // ক্লিক করলে এই লেখাটা আগে থেকেই বসে থাকবে
+    buttonText: "WhatsApp এ মেসেজ করুন"
+  },
+
+  // type: youtube, facebook, instagram, tiktok, telegram, whatsapp, link
+  socials: [
+    { type: "youtube",  label: "YouTube",           url: "https://youtube.com/@editium83" },
+    { type: "facebook", label: "Facebook",          url: "https://www.facebook.com/editium83" },
+    { type: "tiktok",   label: "TikTok",            url: "https://www.tiktok.com/@editium83" },
+    { type: "telegram", label: "Telegram",          url: "https://t.me/editium83" },
+    { type: "whatsapp", label: "WhatsApp চ্যানেল",  url: "https://whatsapp.com/channel/0029VbCRNhz5a245fmJ2hj3P" }
+  ],
+
+  // ইউটিউব লিংক দিলে থাম্বনেইল নিজে থেকেই আসবে।
+  // ফেসবুক ভিডিওর জন্য thumb এ ছবির পথ দিন, যেমন thumb: "v1.jpg"
+  videos: [
+    { title: "আমার ভিডিও ১", url: "https://youtu.be/XCnT99kJuoc" },
+    { title: "আমার ভিডিও ২", url: "https://youtu.be/gVpmBsHDbRI" }
+  ],
+
+  // ছবির ফাইলের নাম দিন (ছবি index.html এর পাশেই রাখুন)
+  // যেমন: { src: "work1.jpg", title: "গ্রাফিক্স ডিজাইন" }
+  // ফাঁকা থাকলে "আমার কাজ" অংশটা লুকানো থাকবে
+  works: [],
+
+  // ভিজিটর গণনা (GoatCounter): সাইন আপ করে যে কোড পাবেন সেটা এখানে বসান, যেমন "editium83"
+  // ফাঁকা থাকলে গণনা বন্ধ থাকবে
+  analytics: { goatcounter: "editium", showCount: true },   // showCount: true হলে সবাই মোট ভিজিট সংখ্যা দেখবে
+
+  // আমার সম্পর্কে: প্রতিটা লেখা আলাদা অনুচ্ছেদ হবে
+  about: {
+    title: "আমার সম্পর্কে",
+    paragraphs: [
+      "আমি সাকিব, বয়স ১৯। পড়াশোনার পাশাপাশি একটা চাকরিও করি।",
+      "এডিটিং আমার প্যাশন। ভিডিও এডিটিং, গ্রাফিক্স ডিজাইন আর এআই দিয়ে নতুন কিছু বানানো আমার প্রিয় কাজ। নতুন কিছু জানতে আর খুঁজে দেখতে আমার ভালো লাগে।",
+      "কাজ নিয়ে কথা বলতে চাইলে নিচের বাটনে চাপ দিয়ে সরাসরি WhatsApp এ মেসেজ করতে পারেন।"
+    ],
+    chips: ["Creative Designer", "AI Creator", "Video Editor", "Graphic Designer", "Digital Creator"]
+  }
+};
+
+/* ==========================================================
+   নিচের অংশ বদলানোর দরকার নেই
+   ========================================================== */
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- ভিজিটর গণনা ---------- */
+  var gcCode = String((CONFIG.analytics && CONFIG.analytics.goatcounter) || "").toLowerCase().replace(/[^a-z0-9-]/g, "");
+  if (gcCode) {
+    var gc = document.createElement("script");
+    gc.async = true;
+    gc.src = "https://gc.zgo.at/count.js";
+    gc.setAttribute("data-goatcounter", "https://" + gcCode + ".goatcounter.com/count");
+    document.head.appendChild(gc);
+
+    // GoatCounter-এর TOTAL কাউন্টার থেকে মোট pageview দেখানো হবে।
+    if (CONFIG.analytics.showCount !== false) {
+      fetch("https://" + gcCode + ".goatcounter.com/counter/TOTAL.json?rnd=" + Date.now())
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+        .then(function (d) {
+          var count = d && d.count != null ? String(d.count) : "";
+          if (!count) return;
+          $("visitorText").textContent = "মোট ভিজিট: " + count;
+          $("visitorCount").hidden = false;
+        })
+        .catch(function () {});
+    }
+  }
+
+  /* ---------- প্রোফাইল ---------- */
+  document.title = CONFIG.realName;
+  $("realName").textContent = CONFIG.realName;
+  $("socialName").textContent = CONFIG.socialName;
+  $("handle").textContent = CONFIG.handle;
+  $("bio").textContent = CONFIG.bio;
+  $("year").textContent = "© " + new Date().getFullYear() + " " + CONFIG.realName;
+
+  var AVATAR_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><rect width="120" height="120" fill="#1B4FD8"/><circle cx="60" cy="52" r="22" fill="#CFE0FF"/><path d="M18 122c0-26 19-40 42-40s42 14 42 40z" fill="#CFE0FF"/><path d="M34 54a26 26 0 0 1 52 0" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/><rect x="27" y="50" width="10" height="18" rx="5" fill="#fff"/><rect x="83" y="50" width="10" height="18" rx="5" fill="#fff"/></svg>';
+  var avatar = $("avatar");
+  avatar.onerror = function () { avatar.onerror = null; avatar.src = "data:image/svg+xml," + encodeURIComponent(AVATAR_SVG); };
+  avatar.src = CONFIG.avatar;
+
+  /* ---------- WhatsApp ---------- */
+  var WA_GLYPH = '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 12a20 20 0 0 0-17.2 30.2L12 52l10.2-2.7A20 20 0 1 0 32 12z" fill="none" stroke="#fff" stroke-width="4.2" stroke-linejoin="round"/><path d="M24.5 24c0 8 6.5 14.5 14.5 15.2l3.2-3.7-5.2-2.7-2.4 2c-2.7-1.2-5.2-3.7-6.4-6.4l2-2.4-2.7-5.2z" fill="#fff"/></svg>';
+  var num = String(CONFIG.whatsapp.number || "").replace(/\D/g, "");
+  var waValid = num.length >= 8 && num.length <= 15;
+  var waUrl = waValid ? "https://wa.me/" + num + "?text=" + encodeURIComponent(CONFIG.whatsapp.message || "") : "#";
+  $("waBtn").innerHTML = WA_GLYPH + "<span></span>";
+  $("waBtn").lastChild.textContent = CONFIG.whatsapp.buttonText;
+  $("waBtn").href = waUrl;
+  $("waRound").innerHTML = WA_GLYPH;
+  $("waRound").href = waUrl;
+
+  /* ---------- অ্যাপ আইকন (গ্লাস টাইল) ---------- */
+  var ICONS = {
+    youtube: '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="17" width="44" height="30" rx="10" fill="none" stroke="#fff" stroke-width="4"/><path d="M28 25v14l12-7z" fill="#fff"/></svg>',
+    facebook: '<svg viewBox="0 0 64 64" aria-hidden="true"><text x="34" y="54" font-size="56" font-weight="700" fill="#fff" text-anchor="middle" font-family="Arial, Helvetica, sans-serif">f</text></svg>',
+    instagram: '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="12" width="40" height="40" rx="12" fill="none" stroke="#fff" stroke-width="4"/><circle cx="32" cy="32" r="9.5" fill="none" stroke="#fff" stroke-width="4"/><circle cx="44" cy="20.5" r="2.8" fill="#fff"/></svg>',
+    tiktok: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M35 13v26a9.5 9.5 0 1 1-7-9.2M35 13c1.2 7 5.5 11.5 12.5 12" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    telegram: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M52 14L11 30.5l11.5 4.2L47 19 29 38l-1.2 12 7.8-8L46 50z" fill="#fff"/></svg>',
+    whatsapp: WA_GLYPH,
+    link: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M27 37l10-10M23.5 33l-3.5 3.5a8.5 8.5 0 0 0 12 12l3.5-3.5M40.5 31l3.5-3.5a8.5 8.5 0 0 0-12-12L28.5 19" stroke="#fff" stroke-width="4.5" fill="none" stroke-linecap="round"/></svg>'
+  };
+  var TINTS = {
+    youtube: "rgba(255,45,45,.7)", facebook: "rgba(24,119,242,.75)", instagram: "rgba(232,60,140,.7)",
+    tiktok: "rgba(37,244,238,.5)", telegram: "rgba(39,167,231,.75)", whatsapp: "rgba(37,211,102,.7)", link: "rgba(255,207,63,.65)"
+  };
+  CONFIG.socials.forEach(function (s, i) {
+    var li = el("li");
+    var a = el("a", "app");
+    a.href = (s.type === "whatsapp" && (!s.url || s.url === "#")) ? waUrl : s.url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.style.setProperty("--i", i);
+    a.setAttribute("aria-label", s.label);
+    var ic = el("span", "icon glass");
+    ic.style.setProperty("--tint", TINTS[s.type] || TINTS.link);
+    ic.style.animationDelay = (-i * 0.55) + "s";
+    ic.innerHTML = ICONS[s.type] || ICONS.link;
+    a.appendChild(ic);
+    a.appendChild(el("span", "app-label", s.label));
+    li.appendChild(a);
+    $("icons").appendChild(li);
+  });
+
+  /* ---------- ভিডিও ---------- */
+  function ytId(url) {
+    var m = /(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/.exec(url || "");
+    return m ? m[1] : null;
+  }
+  var PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5v17l14-8.5z" fill="#fff"/></svg>';
+  if (!CONFIG.videos.length) { $("videos").hidden = true; }
+  CONFIG.videos.forEach(function (v) {
+    var li = el("li");
+    var a = el("a", "video");
+    a.href = v.url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    var thumb = el("span", "thumb");
+    var id = ytId(v.url);
+    var src = v.thumb || (id ? "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg" : null);
+    if (src) {
+      var img = el("img");
+      img.loading = "lazy";
+      img.alt = "";
+      img.onerror = function () { img.remove(); };
+      img.src = src;
+      thumb.appendChild(img);
+    }
+    var play = el("span", "play glass");
+    play.innerHTML = PLAY;
+    thumb.appendChild(play);
+    a.appendChild(thumb);
+    a.appendChild(el("span", "vtitle", v.title));
+    li.appendChild(a);
+    $("videoList").appendChild(li);
+  });
+
+  /* ---------- কাজের নমুনা ---------- */
+  var lb = $("lightbox");
+  if (!CONFIG.works.length) { $("works").hidden = true; }
+  CONFIG.works.forEach(function (w) {
+    var li = el("li");
+    var btn = el("button", "tile glass");
+    btn.type = "button";
+    btn.setAttribute("aria-label", w.title + " বড় করে দেখুন");
+    var img = el("img");
+    img.loading = "lazy";
+    img.alt = w.title;
+    img.onerror = function () {
+      li.innerHTML = "";
+      li.appendChild(el("div", "tile empty glass", w.title));
+    };
+    img.src = w.src;
+    btn.appendChild(img);
+    btn.addEventListener("click", function () {
+      $("lbImg").src = w.src;
+      $("lbImg").alt = w.title;
+      $("lbCap").textContent = w.title;
+      lb.showModal();
+    });
+    li.appendChild(btn);
+    $("workList").appendChild(li);
+  });
+  $("lbClose").addEventListener("click", function () { lb.close(); });
+  lb.addEventListener("click", function (e) { if (e.target === lb) lb.close(); });
+
+  /* ---------- আমার সম্পর্কে (অ্যানিমেটেড) ---------- */
+  $("aboutTitle").textContent = CONFIG.about.title;
+  var n = 0;
+  CONFIG.about.paragraphs.forEach(function (text) {
+    var p = el("p", "about-p");
+    text.split(" ").forEach(function (word) {
+      if (!word) return;
+      var s = el("span", "w", word);
+      s.style.transitionDelay = Math.min(n * 35, 1800) + "ms";
+      n++;
+      p.appendChild(s);
+      p.appendChild(document.createTextNode(" "));
+    });
+    $("aboutText").appendChild(p);
+  });
+  CONFIG.about.chips.forEach(function (c, i) {
+    var li = el("li", "chip glass", c);
+    li.style.transitionDelay = (Math.min(n * 35, 1800) + 150 + i * 90) + "ms";
+    $("chips").appendChild(li);
+  });
+  var about = $("about");
+  if (reduce || !("IntersectionObserver" in window)) {
+    about.classList.add("in");
+  } else {
+    var revealer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { about.classList.add("in"); revealer.disconnect(); }
+      });
+    }, { threshold: 0.25 });
+    revealer.observe(about);
+  }
+
+  /* ---------- নিচের মেনু: কোন অংশে আছেন তা চিহ্নিত ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".tab"));
+  tabs.forEach(function (t) {
+    if (!$(t.getAttribute("data-target")) || $(t.getAttribute("data-target")).hidden) t.hidden = true;
+  });
+  if ("IntersectionObserver" in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        tabs.forEach(function (t) {
+          t.classList.toggle("active", t.getAttribute("data-target") === en.target.id);
+        });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    ["home", "videos", "works", "about"].forEach(function (id) {
+      var s = $(id);
+      if (s && !s.hidden) spy.observe(s);
+    });
+  }
+})();
+</script>
+</body>
+</html>
