@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#04154F"><title>আমার ডিজাইনসমূহ | EDITIUM</title><meta name="description" content="EDITIUM graphic design portfolio — posters, typography and product designs."><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+*{box-sizing:border-box}html{min-height:100%;background:#04154f}body{margin:0;min-height:100vh;color:#fff;font-family:'Hind Siliguri',system-ui,sans-serif;background:radial-gradient(ellipse at 10% 0%,#184f9b 0,transparent 40%),radial-gradient(ellipse at 100% 35%,#293cc1 0,transparent 42%),linear-gradient(145deg,#061a56,#172fa7 60%,#07164a)}
+
+  /* EDITIUM compact design gallery */
+  .design-strip{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+  .design-mini{flex:0 0 112px;max-width:112px;scroll-snap-align:start;text-decoration:none;color:inherit;display:block}
+  .design-mini img{display:block;width:112px;height:126px;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1)}
+  .design-mini span{display:block;font-size:12px;line-height:1.35;margin-top:6px;font-weight:600;max-height:2.7em;overflow:hidden}
+  .design-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px}
+  .design-more{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:10px 14px;border-radius:999px;text-decoration:none;color:inherit;font-weight:700;border:1px solid rgba(255,255,255,.28);background:linear-gradient(120deg,rgba(255,255,255,.24),rgba(255,255,255,.09));}
+  .design-page{max-width:900px;margin:0 auto;padding:22px 16px 50px;min-height:100vh;color:#fff;font-family:'Hind Siliguri',system-ui,sans-serif}
+  .design-page-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+  .design-page-head h1{font-size:clamp(22px,5vw,32px);line-height:1.25;margin:0}
+  .design-back{color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:7px 13px;background:rgba(255,255,255,.12);white-space:nowrap}
+  .design-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .design-card{min-width:0;padding:7px;border:1px solid rgba(255,255,255,.28);border-radius:18px;background:linear-gradient(145deg,rgba(255,255,255,.22),rgba(255,255,255,.08));box-shadow:0 10px 30px rgba(0,0,0,.12);overflow:hidden}
+  .design-open{display:block;width:100%;border:0;background:none;padding:0;color:inherit;text-align:left;cursor:pointer}
+  .design-card-img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:12px;background:rgba(255,255,255,.08)}
+  .design-title{font-size:14px;line-height:1.35;font-weight:700;margin:8px 2px 3px}
+  .design-category{font-size:11px;color:rgba(255,255,255,.75);margin:0 2px 8px}
+  .design-stats{display:flex;justify-content:space-between;gap:4px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.18);padding-top:7px}
+  .design-stat{border:0;background:rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:5px 8px;font-size:11px;cursor:pointer}
+  .design-stat.liked{background:rgba(255,90,140,.3);border:1px solid rgba(255,130,170,.6)}
+  .design-review-panel{display:none;margin-top:9px;padding-top:8px;border-top:1px solid rgba(255,255,255,.18)}
+  .design-review-panel.open{display:block}
+  .design-review-list{display:grid;gap:6px;max-height:170px;overflow:auto;margin-bottom:8px}
+  .design-review{font-size:12px;line-height:1.4;padding:7px 8px;border-radius:10px;background:rgba(0,0,0,.14);overflow-wrap:anywhere}
+  .design-review strong{display:block;font-size:10px;color:#dbe7ff;margin-bottom:2px}
+  .design-review-form{display:flex;gap:5px}
+  .design-review-form input{min-width:0;flex:1;border:1px solid rgba(255,255,255,.24);border-radius:10px;padding:8px;background:rgba(255,255,255,.1);color:#fff;font:inherit;font-size:12px}
+  .design-review-form input::placeholder{color:rgba(255,255,255,.65)}
+  .design-review-form button{border:0;border-radius:10px;padding:7px 10px;background:#fff;color:#173c9b;font-weight:700}
+  .design-empty{grid-column:1/-1;padding:22px;text-align:center;border:1px dashed rgba(255,255,255,.3);border-radius:16px;color:rgba(255,255,255,.8)}
+  .design-lightbox{position:fixed;inset:0;z-index:9999;display:none;place-items:center;background:rgba(0,5,30,.9);padding:16px}
+  .design-lightbox.open{display:grid}
+  .design-lightbox-inner{width:min(94vw,700px);max-height:94vh;overflow:auto;text-align:center}
+  .design-lightbox img{max-width:100%;max-height:72vh;object-fit:contain;border-radius:14px}
+  .design-lightbox p{margin:8px;color:#fff}
+  .design-lightbox button{border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.14);color:#fff;border-radius:999px;padding:8px 18px}
+  @media(min-width:620px){.design-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.design-mini{flex-basis:132px;max-width:132px}.design-mini img{width:132px;height:148px}}
+ .design-page{padding-top:28px}.design-subtitle{color:rgba(255,255,255,.75);margin:7px 0 18px;font-size:14px}.design-page .visitor-badge{margin:0 0 16px auto;width:max-content;padding:6px 12px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(255,255,255,.12);font-size:12px}.design-page .visitor-badge strong{margin-left:5px}.design-notice{font-size:12px;color:rgba(255,255,255,.7);margin-top:18px;line-height:1.5}
+</style></head><body><main class="design-page"><div class="visitor-badge">মোট ওয়েবসাইট ভিউ <strong id="visitorCount">—</strong></div><header class="design-page-head"><div><h1>আমার ডিজাইনসমূহ</h1><p class="design-subtitle">EDITIUM · Graphic Design Portfolio</p></div><a class="design-back" href="index.html">← হোম</a></header><div class="design-grid" id="designGrid"></div><p class="design-notice">রিভিউতে পরিচয়ের বদলে “visitors” নাম দেখানো হয়। এই ফাইলের ডেমো লাইক/রিভিউ/ভিউ এই ব্রাউজারে সংরক্ষিত থাকে। সব ডিভাইসে সবার তথ্য একসঙ্গে দেখাতে অনলাইন ডেটাবেস কনফিগার করতে হবে।</p></main><div class="design-lightbox" id="preview" role="dialog" aria-modal="true" aria-label="ডিজাইন প্রিভিউ"><div class="design-lightbox-inner"><img id="previewImg" alt=""><p id="previewTitle"></p><button id="previewClose" type="button">বন্ধ করুন</button></div></div>
+<script>
+const DESIGNS=[
+ {id:'basic-computer-course',src:'basic-computer-course.jpg',title:'Basic Computer Course',category:'Poster Design'},
+ {id:'creative-career-poster',src:'creative-career-poster.jpg',title:'নিজেকে কোথায় দেখতে চান?',category:'Typography Design'},
+ {id:'vatika-hair-oil',src:'vatika-hair-oil.jpg',title:'Vatika Hair Oil',category:'Product Poster'}
+];
+const key=(id,suffix)=>'editium:'+id+':'+suffix;const read=(k,fb)=>{try{const v=localStorage.getItem(k);return v===null?fb:JSON.parse(v)}catch(e){return fb}};const save=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+function openPreview(d){const p=document.getElementById('preview');document.getElementById('previewImg').src=d.src;document.getElementById('previewTitle').textContent=d.title;p.classList.add('open');const k=key(d.id,'views');save(k,read(k,0)+1);document.getElementById('v-'+d.id).textContent='View '+read(k,0)}
+function draw(){const grid=document.getElementById('designGrid');DESIGNS.forEach(d=>{const card=document.createElement('article');card.className='design-card';const open=document.createElement('button');open.className='design-open';open.type='button';const img=document.createElement('img');img.className='design-card-img';img.src=d.src;img.alt=d.title;img.loading='lazy';img.onerror=()=>{img.alt='ছবি লোড হয়নি: '+d.src;img.style.minHeight='180px';img.style.objectFit='contain';};open.appendChild(img);const title=document.createElement('div');title.className='design-title';title.textContent=d.title;open.appendChild(title);const cat=document.createElement('div');cat.className='design-category';cat.textContent=d.category;open.appendChild(cat);open.addEventListener('click',()=>openPreview(d));card.appendChild(open);
+const stats=document.createElement('div');stats.className='design-stats';const view=document.createElement('button');view.className='design-stat';view.id='v-'+d.id;view.textContent='View '+read(key(d.id,'views'),0);view.addEventListener('click',()=>openPreview(d));stats.appendChild(view);
+const like=document.createElement('button');like.className='design-stat';const lk=key(d.id,'liked');function upLike(){const likes=read(key(d.id,'likes'),0);like.textContent='Like '+likes;like.classList.toggle('liked',read(lk,false));}upLike();like.addEventListener('click',()=>{const was=read(lk,false);save(lk,!was);save(key(d.id,'likes'),Math.max(0,read(key(d.id,'likes'),0)+(was?-1:1)));upLike()});stats.appendChild(like);
+const reviewBtn=document.createElement('button');reviewBtn.className='design-stat';const reviewKey=key(d.id,'reviews');function countReviews(){reviewBtn.textContent='Review '+read(reviewKey,[]).length;}countReviews();stats.appendChild(reviewBtn);card.appendChild(stats);
+const panel=document.createElement('div');panel.className='design-review-panel';const list=document.createElement('div');list.className='design-review-list';function drawReviews(){list.replaceChildren();read(reviewKey,[]).forEach(r=>{const row=document.createElement('div');row.className='design-review';const who=document.createElement('strong');who.textContent='visitors';const body=document.createElement('span');body.textContent=r.text;row.append(who,body);list.appendChild(row)});countReviews()}panel.appendChild(list);const form=document.createElement('form');form.className='design-review-form';const input=document.createElement('input');input.placeholder='আপনার রিভিউ লিখুন';input.maxLength=500;input.required=true;input.setAttribute('aria-label','আপনার রিভিউ');const send=document.createElement('button');send.textContent='পাঠান';form.append(input,send);form.addEventListener('submit',e=>{e.preventDefault();const reviews=read(reviewKey,[]);reviews.push({name:'visitors',text:input.value.trim(),time:Date.now()});save(reviewKey,reviews);input.value='';drawReviews()});panel.appendChild(form);reviewBtn.addEventListener('click',()=>{panel.classList.toggle('open');drawReviews()});card.appendChild(panel);grid.appendChild(card)});}
+draw();document.getElementById('previewClose').addEventListener('click',()=>document.getElementById('preview').classList.remove('open'));document.getElementById('preview').addEventListener('click',e=>{if(e.target.id==='preview')e.currentTarget.classList.remove('open')});
+// Live visit counting: GoatCounter must be active for editium83.goatcounter.com.
+const gc='https://editium83.goatcounter.com';const count=document.getElementById('visitorCount');const sc=document.createElement('script');sc.async=true;sc.src='https://gc.zgo.at/count.js';sc.dataset.goatcounter=gc+'/count';document.head.appendChild(sc);fetch(gc+'/counter/TOTAL.json',{mode:'cors',cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(d=>{const n=Number(d.count??d.count_unique??d.total);if(Number.isFinite(n))count.textContent=n.toLocaleString('en-US')}).catch(()=>count.textContent='—');
+</script></body></html>
