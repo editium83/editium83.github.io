@@ -658,7 +658,7 @@ dialog::backdrop{background:rgba(var(--bd),.55)}
 <section id="promptPage" aria-label="Trending Prompt" aria-hidden="true">
  <div class="dg-wrap">
   <header class="dg-head"><h2>Trending Prompt</h2><button class="dg-back" id="ppBack" type="button">← ফিরে যান</button></header>
-  <p class="dg-sub">EDITIUM · ভিডিও বানানোর কপি-রেডি Prompt</p>
+  <p class="dg-sub">EDITIUM · ফটো বা ভিডিও বানানোর কপি টু রেডি Prompt</p>
   <div class="pp-tools">
     <div class="pp-search">
      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
@@ -1164,7 +1164,7 @@ var CONFIG = {
   // উদাহরণ: { id: "photo-1", type: "photo", title: "...", image: "photo1.jpg", prompt: "..." },
   // image: GitHub-এর images ফোল্ডারের ছবি, যেমন "prompt1.jpg" (ছবি index.html এর পাশেই রাখুন)
   var TRENDING_PROMPTS = [
-  { id: "photo-cinematic-1", type: "photo", title: "Cinematic Colour Grading", image: "photo1.jpg", prompt: "Bright cinematic outdoor color grading. Chany Find similaro a full solid vibrant orange gradient covering the entire sky, smooth clean gradient, no sunset glow and no visible sun. Keep the lighting bright naturalgreen color as in the reference images, rich fresh rice-field green tone, high saturation but still realistic, deep lush green similar to healthy paddy field plants. Add strong background blur (depth of field) to the distant background while keeping the subject extre." },
+  { id: "photo-cinematic-1", type: "photo", title: "CINEMATIC COLOUR GRADING PHOTO PROMPT", image: "photo1.jpg", prompt: "Bright cinematic outdoor color grading. Chany Find similaro a full solid vibrant orange gradient covering the entire sky, smooth clean gradient, no sunset glow and no visible sun. Keep the lighting bright naturalgreen color as in the reference images, rich fresh rice-field green tone, high saturation but still realistic, deep lush green similar to healthy paddy field plants. Add strong background blur (depth of field) to the distant background while keeping the subject extre." },
     { id: "video-motion-1", type: "video", title: "AI MOTION GRAPHIC VIDEO PROMPT", image: "prompt1.jpg", prompt: "আমি একটা মোশন গ্রাফিক্স ভিডিও বানাতে চাই।\n\nরেফারেন্স: আপলোড করা ফ্রেমের কালার, ফন্ট ও মুভমেন্ট যতটা সম্ভব মিলিয়ে নাও।\n\nসাইজ: YouTube size\nভাষা: বাংলা\nফন্ট : আগে থেকেই আপলোড করা আছে।\nআমার স্ক্রিপ্ট: [Editium]\nভয়েসওভার: [আপলোড করছি]\nছবি/অ্যাসেট: [লোগো আপলোড করেছি]\n\nকী করতে হবে:\n1. স্ক্রিপ্ট ভেঙে সিন-বাই-সিন স্টোরিবোর্ড দাও (সিন নম্বর, সময়, টেক্সট, অ্যানিমেশন)।\n2. সময় ঠিক করার নিয়ম: ভয়েসওভারের নীরবতা/বিরতি মেপে বাক্য ধরে সিনের শুরু-শেষ বের করো। এটা না পারলে আমাকে জিজ্ঞেস করো কোন লাইন কত সেকেন্ডে।\n3. নিজের কাজ নিজে যাচাই করো: লেখা কোথাও কেটে যাচ্ছে কিনা, কোনো সিনে ওভারল্যাপ আছে কিনা, টাইমিং ঠিক আছে কিনা দেখে নাও।\n4. শেষে বলো টাইমিং কোথায় বদলাতে হবে, যাতে আমি ভয়েসের সাথে মিলিয়ে নিতে পারি।\n5. ভয়েস এর সাথে ক্লিপ এর মিল রাখবে এবং যদি পারো সাউন্ড ইফেক্ট দিবে।" }
   ];
   /* Copy ও Like সবাই একই সংখ্যা দেখবে — এর জন্য নিচে Firebase Realtime Database-এর লিংক বসান।
